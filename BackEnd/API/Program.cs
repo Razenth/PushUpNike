@@ -10,6 +10,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.ConfigureRateLimiting();
 builder.Services.AddAutoMapper(Assembly.GetEntryAssembly());
 builder.Services.ConfigureCors();
+builder.Services.AddControllers();
 builder.Services.AddApplicationServices();
 
 
@@ -44,11 +45,11 @@ using (var scope = app.Services.CreateScope())
 }
 app.UseHttpsRedirection();
 
-app.MapControllers();
-
 // Va despues de app.MapControllers();
 app.UseCors("CorsPolicy");
 
 app.UseIpRateLimiting();
+
+app.MapControllers();
 
 app.Run();

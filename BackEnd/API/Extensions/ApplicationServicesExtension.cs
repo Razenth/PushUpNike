@@ -16,8 +16,7 @@ public static class ApplicationServicesExtension
                 .AllowAnyHeader();
         });
     });
-
-
+    
     public static void ConfigureRateLimiting(this IServiceCollection services)
     {
         services.AddMemoryCache();
@@ -43,8 +42,6 @@ public static class ApplicationServicesExtension
             };
         });
     }
-
-
     public static void AddApplicationServices(this IServiceCollection services)
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
