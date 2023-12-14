@@ -1,11 +1,17 @@
+using System.Reflection;
+using API.Extensions;
+using AspNetCoreRateLimit;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.ConfigureRateLimiting();
+builder.Services.AddAutoMapper(Assembly.GetEntryAssembly());
+builder.Services.ConfigureCors();
+builder.Services.AddApplicationServices();
+
 
 builder.Services.AddDbContext<NikeContext>(options =>
 {
@@ -37,5 +43,12 @@ using (var scope = app.Services.CreateScope())
     }
 }
 app.UseHttpsRedirection();
+
+app.MapControllers();
+
+// Va despues de app.MapControllers();
+app.UseCors("CorsPolicy");
+
+app.UseIpRateLimiting();
 
 app.Run();
