@@ -3,13 +3,12 @@ using System.Collections.Generic;
 
 namespace Domain.Entities;
 
-public partial class Producto
+public partial class Producto : BaseEntity
 {
-    public int Id { get; set; }
 
     public string NombreProducto { get; set; } = null!;
 
-    public string? Descripcion { get; set; }
+    public string Descripcion { get; set; }
 
     public decimal Precio { get; set; }
 
@@ -19,7 +18,7 @@ public partial class Producto
 
     public int? StockMaximo { get; set; }
 
-    public string? UrlProducto { get; set; }
+    public string UrlProducto { get; set; }
 
     public virtual ICollection<Detallescarrocompra> Detallescarrocompras { get; set; } = new List<Detallescarrocompra>();
 

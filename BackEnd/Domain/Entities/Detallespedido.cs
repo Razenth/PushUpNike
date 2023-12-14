@@ -3,9 +3,8 @@ using System.Collections.Generic;
 
 namespace Domain.Entities;
 
-public partial class Detallespedido
+public partial class Detallespedido : BaseEntity
 {
-    public int Id { get; set; }
 
     public int? PedidoId { get; set; }
 

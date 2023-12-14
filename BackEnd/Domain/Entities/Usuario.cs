@@ -3,9 +3,8 @@ using System.Collections.Generic;
 
 namespace Domain.Entities;
 
-public partial class Usuario
+public partial class Usuario : BaseEntity
 {
-    public int Id { get; set; }
 
     public string NombreUsuario { get; set; } = null!;
 
